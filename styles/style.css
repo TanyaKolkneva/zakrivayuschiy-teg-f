@@ -14,9 +14,7 @@
   min-inline-size: 320px;
   min-block-size: 100dvb;
   font-family: var(--main-font), sans-serif;
-  font-variation-settings:
-    "wght" var(--main-font-weight),
-    410;
+  font-variation-settings: "wght" var(--main-font-weight, 410);
   background-size: cover;
   background-attachment: fixed;
   background-image: var(--background-image);
@@ -38,8 +36,8 @@
   margin-inline: auto;
 }
 
-.header__title {
-  font-family: var(--accent-font), monospace;
+.header__logo {
+  font-family: var(--accent-font), fantasy;
   font-weight: 400;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   line-height: 100%;
@@ -49,7 +47,7 @@
 }
 
 .header__text {
-  font-family: var(--accent-font), monospace;
+  font-family: var(--accent-font), fantasy;
   font-weight: 400;
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   line-height: 100%;
@@ -71,10 +69,7 @@
 
 .main__card-title {
   font-family: var(--main-font), sans-serif;
-  font-variation-settings:
-    "wght" var(--title-font-weight),
-    715;
-  font-weight: 715;
+  font-variation-settings: "wght" var(--title-font-weight, 715);
   font-size: 18px;
   line-height: 100%;
   vertical-align: middle;
@@ -94,7 +89,7 @@
 }
 
 .main__card-label {
-  font-family: var(--accent-font), monospace;
+  font-family: var(--accent-font), fantasy;
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
@@ -106,10 +101,10 @@
   mix-blend-mode: hard-light;
   opacity: 50%;
   text-shadow:
-    1 0 var(--card-label-stroke-color),
-    0 1 var(--card-label-stroke-color),
-    -1 0 var(--card-label-stroke-color),
-    0 -1 var(--card-label-stroke-color);
+    1px 0 var(--card-label-stroke-color),
+    0 1px var(--card-label-stroke-color),
+    -1px 0 var(--card-label-stroke-color),
+    0 -1px var(--card-label-stroke-color);
 }
 
 @supports (
@@ -132,7 +127,6 @@
 .main__card-text {
   font-family: var(--main-font), sans-serif;
   font-weight: 410;
-  font-style: Regular;
   font-size: 18px;
   line-height: 21px;
 }
@@ -140,7 +134,7 @@
 .main__card-icon {
   display: flex;
   justify-content: flex-end;
-  gap: 12px;
+  gap: 6px;
 }
 
 .main__card-icon:focus {
@@ -157,6 +151,7 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  padding: 0;
 }
 
 .card__icon-button,
@@ -170,7 +165,11 @@
 }
 
 .card__icon-button:focus-visible {
-  border-color: var(--accent-border-color);
+  border: 2px solid var(--accent-border-color);
+}
+
+.like-icon:focus-visible {
+  border: 2px solid var(--accent-border-color);
 }
 
 .like-icon {
@@ -226,10 +225,12 @@
 
 .button__text {
   vertical-align: middle;
-  font-family: var(--accent-font), monospace;
+  font-family: var(--accent-font), fantasy;
   font-weight: 400;
   font-size: 14px;
   line-height: 90%;
+  color: #fff;
+  mix-blend-mode: difference;
 }
 
 .image-blur {
@@ -278,7 +279,6 @@
   block-size: 21px;
   z-index: 1;
   position: relative;
-  /* color: #fff; */
 }
 
 .button__save-icon:hover {
@@ -314,6 +314,7 @@
   width: 39px;
   height: 39px;
   color: #fff;
+  mix-blend-mode: difference;
 }
 
 .dialog__text {
@@ -326,9 +327,6 @@
 .button {
   position: relative;
   overflow: hidden;
-  min-block-size: 38px;
-  padding: 20.5px 20px;
-  border: 2px solid #000;
   background-color: #fff;
   font-family: var(--accent-font);
   font-size: 14px;
@@ -343,19 +341,13 @@
   text-transform: uppercase;
 }
 
-.like-button,
-.button,
-.button__save,
-.button__save-icon {
+.button {
   cursor: pointer;
   position: relative;
   overflow: hidden;
 }
 
-.like-button::before,
-.button::before,
-.button__save::before,
-.button__save-icon::before {
+.button::before {
   position: absolute;
   content: "";
   inset: 0;
@@ -364,31 +356,20 @@
   background-color: #000;
 }
 
-.like-button:hover::before,
-.button:hover::before,
-.button__save:hover::before,
-.button__save-icon.button:hover::before {
+.button:hover::before {
   transform: translateX(0);
 }
 
-.like-button:focus,
-.button.button:focus,
-.button__save:focus,
-.button__save-icon:focus {
+.button:focus {
   outline: none;
 }
 
-.like-button:focus-visible,
-.button:focus-visible,
-.button__save:focus-visible,
-.button__save-icon:focus-visible {
+.button:focus-visible {
   box-shadow: 2px 2px 0 #000;
   transition: box-shadow 0.3s ease;
 }
 
-.like-button:hover span,
-.button:hover span,
-.button__save:hover span {
+.button:hover span {
   color: #fff;
   z-index: 1;
 }
@@ -428,11 +409,15 @@
     height: 84px;
   }
 
-  .header__title {
+  .header__logo {
     font-size: 49px;
   }
 
   .header__text {
     font-size: 14px;
+  }
+
+  .main__card-title {
+    padding: 6px 12px;
   }
 }
