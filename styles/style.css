@@ -147,11 +147,12 @@
 
 .card__icon-button {
   width: 39px;
-  height: 36px;
+  height: 38px;
   background-color: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
+  transition: border 0.3s ease;
 }
 
 .card__icon-button,
@@ -165,6 +166,7 @@
 }
 
 .card__icon-button:focus-visible {
+  display: flex;
   border: 2px solid var(--accent-border-color);
 }
 
@@ -281,10 +283,6 @@
   position: relative;
 }
 
-.button__save-icon:hover {
-  color: #fff;
-}
-
 .dialog {
   display: none;
   width: 355px;
@@ -339,12 +337,6 @@
   grid-column: 1 / -1;
   width: 100%;
   text-transform: uppercase;
-}
-
-.button {
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
 }
 
 .button::before {
