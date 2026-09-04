@@ -149,7 +149,7 @@
   width: 39px;
   height: 38px;
   background-color: transparent;
-  border: none;
+  border: 2px solid transparent;
   cursor: pointer;
   padding: 0;
   transition: border 0.3s ease;
@@ -281,6 +281,8 @@
   block-size: 21px;
   z-index: 1;
   position: relative;
+  color: #fff;
+  mix-blend-mode: difference;
 }
 
 .dialog {
